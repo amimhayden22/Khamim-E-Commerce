@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{HomeController, UserController};
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('dasbor')->group(function () {
+        Route::get('/', [HomeController::class, 'index'])->name('home');
+        Route::resource('users', UserController::class);
+    });
 });

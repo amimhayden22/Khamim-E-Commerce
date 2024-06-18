@@ -1,5 +1,20 @@
 models:
-  # ...
+  Product:
+    name: String
+    slug: String
+    price: Double
+    stock: Integer
+    image: String nullable
+    description: Text nullable
+    status: enum:active,inactive
+    relationships:
+      hasMany: Transaction
 
-controllers:
-  # ...
+  Transaction:
+    product_id: Integer
+    user_id: Integer
+    quantity: Integer
+    total: Double
+    status: enum:pending,successful,failed
+    relationships:
+      belongsTo: Product

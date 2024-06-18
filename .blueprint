@@ -1,2 +1,11 @@
+created:
+    - database/factories/ProductFactory.php
+    - database/factories/TransactionFactory.php
+    - database/migrations/2024_06_15_123651_create_products_table.php
+    - database/migrations/2024_06_15_123652_create_transactions_table.php
+    - app/Models/Product.php
+    - app/Models/Transaction.php
 models:
-    User: {  }
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable', role: "enum:'Admin','Customer' default:Customer" }
+    Product: { name: String, slug: String, price: Double, stock: Integer, image: 'String nullable', description: 'Text nullable', status: 'enum:active,inactive', relationships: { hasMany: Transaction } }
+    Transaction: { product_id: Integer, user_id: Integer, quantity: Integer, total: Double, status: 'enum:pending,successful,failed', relationships: { belongsTo: Product } }

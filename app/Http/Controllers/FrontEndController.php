@@ -51,6 +51,7 @@ class FrontEndController extends Controller
         ]);
 
         $transaction = Transaction::create([
+            'order_id'      => 'TRN-0'.rand(1000, 9999).'-'.date('Y'),
             'customer_id'   => $customer->id,
             'product_id'    => $product->id,
             'quantity'      => $request->quantity,
@@ -60,7 +61,7 @@ class FrontEndController extends Controller
 
         $payload = [
             'transaction_details' => [
-                'order_id'     => $transaction->id,
+                'order_id'     => $transaction->order_id,
                 'gross_amount' => $transaction->total,
             ],
             'customer_details' => [
@@ -69,7 +70,7 @@ class FrontEndController extends Controller
             ],
             'item_details' => [
                 [
-                    'id'            => $transaction->id,
+                    'id'            => $transaction->order_id,
                     'price'         => $transaction->total,
                     'quantity'      => 1,
                     'name'          => $product->name,
@@ -91,7 +92,7 @@ class FrontEndController extends Controller
 
     public function updateStock(Request $request, $id)
     {
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::where('order_id', $id)->first();
 
         $transaction->update([
             'status' => $request->status,

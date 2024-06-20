@@ -16,6 +16,7 @@ class Transaction extends Model
      * @var array
      */
     protected $fillable = [
+        'order_id',
         'product_id',
         'customer_id',
         'quantity',
@@ -31,6 +32,7 @@ class Transaction extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'order_id' => 'string',
         'product_id' => 'integer',
         'customer_id' => 'integer',
         'total' => 'double',

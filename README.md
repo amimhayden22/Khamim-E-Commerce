@@ -35,7 +35,7 @@ Website sederhana untuk manage produk dan pembelian produk dengan payment gatewa
 
 Untuk membuka halaman admin silakan buka url `http://127.0.0.1:8000/login`. Anda dapat login menggunakan akun berikut:
 
-> Email: **admin@gmail.com** <br>
+> Email: **admin@khamim.my.id** <br>
 > Password: **password**
 
 

@@ -36,7 +36,7 @@ class ProductController extends Controller
             'name'          => 'required|string|max:255',
             'price'         => 'required|not_in:0|min:1|numeric',
             'stock'         => 'required|numeric|min:1',
-            'image'         => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'description'   => 'nullable|max:150',
             'status'        => 'required|in:active,inactive',
         ]);

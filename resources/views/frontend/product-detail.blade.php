@@ -57,6 +57,7 @@
 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.clientKey') }}"></script>
 <script type="text/javascript">
     $(document ).ready(function() {
+        $('#checkout-now').attr('disabled', 'disabled');
         // Calculate total price
         $("#quantity").on("input", function() {
             var quantity = $(this).val();
@@ -126,7 +127,7 @@
                 // console.log(data['snap_token']);
                 snap.pay(data['snap_token'], {
                     onSuccess: function(result) {
-                        // console.log(result.order_id);
+                        console.log(result.order_id);
                         // alert('Transaksi berhasil');
                         var order_id = result.order_id;
                         $.post("{{ url('/our-products/checkout/update-stock') }}/" + order_id, {

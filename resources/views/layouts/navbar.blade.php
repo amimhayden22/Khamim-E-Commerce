@@ -18,9 +18,9 @@
                 <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
+                        </li> --}}
                     @endif
 
                     @if (Route::has('register'))
@@ -30,13 +30,16 @@
                     @endif
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.index') }}">{{ __('Produk') }}</a>
+                        <a class="nav-link {{ request()->is('dasbor/products*') ? 'active' : '' }}" href="{{ route('products.index') }}">{{ __('Produk') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ __('Transaksi') }}</a>
+                        <a class="nav-link {{ request()->is('dasbor/customers') ? 'active' : '' }}" href="{{ route('customers.index') }}">{{ __('Data Kustomer') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users.index') }}">{{ __('Pengguna') }}</a>
+                        <a class="nav-link {{ request()->is('dasbor/transactions') ? 'active' : '' }}" href="{{ route('transactions.index') }}">{{ __('Pembelian Produk') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('dasbor/users*') ? 'active' : '' }}" href="{{ route('users.index') }}">{{ __('Pengguna') }}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -1,20 +1,28 @@
 models:
-  Product:
+  # Product:
+  #   name: String
+  #   slug: String
+  #   price: Double
+  #   stock: Integer
+  #   image: String nullable
+  #   description: Text nullable
+  #   status: enum:active,inactive
+  #   relationships:
+  #     hasMany: Transaction
+
+  Customer:
     name: String
-    slug: String
-    price: Double
-    stock: Integer
-    image: String nullable
-    description: Text nullable
-    status: enum:active,inactive
+    email: String
+    phone: String nullable
     relationships:
       hasMany: Transaction
 
   Transaction:
-    product_id: Integer
-    user_id: Integer
+    product_id: foreign
+    customer_id: foreign
     quantity: Integer
     total: Double
     status: enum:pending,successful,failed
+    snap_token: String nullable
     relationships:
-      belongsTo: Product
+      belongsTo: Product&Customer

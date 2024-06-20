@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <form action="{{ route('users.store') }}" method="POST">
                         @csrf
+                        <input type="hidden" name="role" value="role">
                         <div class="mb-3">
                             <label for="name">Nama</label>
 
@@ -60,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="role">Role</label>
 
                             <div class="">
@@ -75,7 +76,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
                         <button type="submit" class="btn btn-primary float-end">Simpan</button>
                     </form>
                 </div>

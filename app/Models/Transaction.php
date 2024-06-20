@@ -17,10 +17,11 @@ class Transaction extends Model
      */
     protected $fillable = [
         'product_id',
-        'user_id',
+        'customer_id',
         'quantity',
         'total',
         'status',
+        'snap_token',
     ];
 
     /**
@@ -31,16 +32,18 @@ class Transaction extends Model
     protected $casts = [
         'id' => 'integer',
         'product_id' => 'integer',
+        'customer_id' => 'integer',
         'total' => 'double',
     ];
+
 
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function user(): BelongsTo
+    public function customer(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class);
     }
 }
